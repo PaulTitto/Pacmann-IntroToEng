@@ -180,6 +180,28 @@ class Transaction(object):
             df = pd.DataFrame(dict_transaksi)
             print(df)
 
+        from sqlalchemy import create_engine
+        from sqlalchemy import text
+
+        engine = create_engine('sqlite:///example.db')
+
+        conn = engine.connect()
+
+
+        query = text("""
+        INSERT INTO transaksi(nama_item, jumlah_item, harga, total_harga)
+        VALUES (:nama_item, :jumlah_item, :harga, :total_harga)
+        )
+        """)
+
+        conn.execute(query,
+        nama_item = dict_transaksi["Pesanan"],
+        jumlah_item = dict_transaksi["Jumlah Pesanan"],
+        harga = dict_transaksi["Harga Pesanan"],
+        total_harga = dict_transaksi["Total Pembayaran"],)
+        conn.close()
+
+
     def delete_item(self):
         dict_transaksi = {'Pesanan' : items,
                           'Jumlah Pesanan':jumlah_items,
@@ -213,4 +235,26 @@ class Transaction(object):
 
 
 
+    def total_price(self):
+        dict_transaksi = {'Pesanan' : items,
+                          'Jumlah Pesanan':jumlah_items,
+                          'Harga Pesanan':items_price, 
+                          'Total Pembayaran' : total_harga}
 
+        if not any(dict_transaksi.values()):
+          print("Tidak ada data transaksi!")
+        else:
+            df = pd.DataFrame(dict_transaksi)
+            print(df)
+            if sum(dict_transaksi["Total Pembayaran"]) > 500000:
+                print("Sebelum mendapatkan diskon 7%: Rp.{}".format(sum(dict_transaksi["Total Pembayaran"])))
+                print("Setelah mendapatkan diskon 7%: Rp.{}".format(
+                    int(sum(dict_transaksi["Total Pembayaran"]) - (sum(dict_transaksi["Total Pembayaran"]) * 0.07))))
+            elif sum(dict_transaksi["Total Pembayaran"]) > 300000:
+                print("Sebelum mendapatkan diskon 6%: Rp.{}".format(sum(dict_transaksi["Total Pembayaran"])))
+                print("Setelah mendapatkan diskon 6%: Rp.{}".format(
+                    sum(int(dict_transaksi["Total Pembayaran"]) - (sum(dict_transaksi["Total Pembayaran"]) * 0.06))))
+            elif sum(dict_transaksi["Total Pembayaran"]) > 200000:
+                print("Sebelum mendapatkan diskon 5%: Rp.{}".format(sum(dict_transaksi["Total Pembayaran"])))
+                print("Setelah mendapatkan diskon 5%: Rp.{}".format(
+                    sum(int(dict_transaksi['Total Pembayaran']) - (sum(dict_transaksi["Total Pembayaran"]) * 0.05))))
