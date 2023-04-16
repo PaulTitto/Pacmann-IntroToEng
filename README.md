@@ -1,5 +1,5 @@
 
- ## Background Projec
+ ## Background Project
  
  
  Andi  adalah  seorang  pemilik  supermarket  besar  di  salah  satu  kota  di  Indonesia.  Andi  memiliki 
@@ -40,3 +40,33 @@ Setelah  Andi  melakukan  riset,  ternyata  Andi  memiliki  masalah,  yaitu  And
  pada baris/list tersebut akan ikut terhapus 
  b.  Langsung menghapus semua transaksi atau reset transaksi dengan method 
  reset_transaction() 
+ 
+5.  Customer sudah selesai dengan berbelanja online nya, tetapi Customer masih ragu 
+ apakah harga barang dan nama barang yang diinput sudah benar. Bisa saja Customer 
+ melakukan kesalahan dalam melakukan input, semisal sudah melakukan input harga 
+ barang tetapi lupa untuk input nama barangnya. Andi bisa menggunakan method 
+ check_order().  Terdapat ketentuan: 
+ a.  Akan mengeluarkan pesan  “Pemesanan sudah benar”  (bebas  bisa dengan 
+ message yang lain)  jika tidak ada kesalahan input 
+ b.  Akan mengeluarkan pesan  “Terdapat kesalahan input  data”  jika terjadi 
+ kesalahan input 
+ c.  Keluarkan output transaksi atau pemesanan apa saja yang sudah dibeli. 
+ Contoh Output: 
+ | No | Nama Item | Jumlah Item | Harga/Item | Total Harga | 
+ |----|-----------|-------------|------------|-------------| 
+ | 1  | Mobil     | 2           | 100000     | 200000      | 
+ | 2  | Mie       | 1           | 5000       | 5000        | 
+ | 3  | Tempe     | 3           | 3000       | 9000        | 
+ 
+6.  Setelah melakukan pengecekan, Customer bisa menghitung total belanja yang sudah 
+ dibeli. Andi bisa menggunakan method  check_out() 
+ .  Pada supermarket ini ternyata 
+ terdapat ketentuan: 
+ a.  Jika  total  harga  per  item  Andi  diatas  Rp  200.000  maka  akan  mendapatkan 
+ diskon 5% 
+ b.  Jika  total  harga  per  item  Andi  diatas  Rp  300.000  maka  akan  mendapatkan 
+ diskon 6% 
+ c.  Jika  total  harga  per  item  Andi  diatas  Rp  500.000  maka  akan  mendapatkan 
+ diskon 7% 
+ d.  Total  pembelian  hanya  ditampilkan  pada  method  check_out() namun  tidak  di 
+ simpan di dalam database 
