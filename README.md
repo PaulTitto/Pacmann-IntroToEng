@@ -16,3 +16,27 @@ Setelah  Andi  melakukan  riset,  ternyata  Andi  memiliki  masalah,  yaitu  And
  
  
  ## Feature Requirements 
+
+1.  Customer membuat ID transaksi customer berikut 
+ a.  Dengan membuat objek dari function :  trnsct_123 =  transaction() 
+ 
+2.  Kemudian, Customer memasukkan nama item, jumlah item, dan harga barang. 
+ a.  Masukkan item yang ingin dibeli. 
+ add_item([<nama item>, <jumlah item>, <harga per item>]) 
+ 
+3.  Jika ternyata ada kesalahan dalam memasukkan nama item atau jumlah item atau 
+ harga item tetapi tidak ingin menghapus itemnya, Customer bisa melakukan 
+ a.  Update nama item dengan method: 
+ update_item_name(<nama item>, <update nama item>) 
+ b.  Update jumlah item dengan method: 
+ update_item_qty(<nama_item>, <update jumlah item>) 
+ c.  Update harga item menggunakan method: 
+ update_item_price(<nama_item>, <update harga item>) 
+ 
+4.  Jika batal membeli item belanjaan, Customer bisa melakukan 
+ a.  Menghapus salah satu item dari nama item dengan method 
+ delete_item(<nama item>)
+ Ketika menghapus salah satu nama item, maka jumlah item dan harga per item 
+ pada baris/list tersebut akan ikut terhapus 
+ b.  Langsung menghapus semua transaksi atau reset transaksi dengan method 
+ reset_transaction() 
